@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 import "core.proto";
 
 
-option go_package = "ho_oh;ho_oh";
+option go_package = "ho_oh/bulbasur_v1;bulbasur_v1";
 
 message AuthTokenDto {
     string token = 1;

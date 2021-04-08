@@ -1,4 +1,4 @@
-module ho-oh
+module ho_oh
 
 go 1.14
 

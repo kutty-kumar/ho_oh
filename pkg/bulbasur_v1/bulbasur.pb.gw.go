@@ -2,11 +2,11 @@
 // source: ho-oh/pkg/bulbasur_v1/bulbasur.proto
 
 /*
-Package ho_oh is a reverse proxy.
+Package bulbasur_v1 is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package ho_oh
+package bulbasur_v1
 
 import (
 	"context"

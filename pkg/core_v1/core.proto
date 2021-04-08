@@ -4,7 +4,7 @@ package core;
 
 import "google/protobuf/empty.proto";
 
-option go_package = "ho_oh;ho_oh";
+option go_package = "ho_oh/core_v1;core_v1";
 
 
 enum Gender {

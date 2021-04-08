@@ -2,11 +2,11 @@
 // source: ho-oh/pkg/pikachu_v1/pikachu.proto
 
 /*
-Package ho_oh is a reverse proxy.
+Package pikachu_v1 is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package ho_oh
+package pikachu_v1
 
 import (
 	"context"
