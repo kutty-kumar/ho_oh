@@ -1,0 +1,220 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "ho-oh/pkg/bulbasur_v1/bulbasur.proto",
+    "version": "version not set"
+  },
+  "paths": {
+    "/v1/login": {
+      "post": {
+        "tags": [
+          "AuthService"
+        ],
+        "operationId": "AuthServiceLogin",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bulbasur_v1LoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "POST operation response",
+            "schema": {
+              "$ref": "#/definitions/bulbasur_v1LoginResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/{token_id}/logout": {
+      "post": {
+        "tags": [
+          "AuthService"
+        ],
+        "operationId": "AuthServiceLogout",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bulbasur_v1LogoutRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "POST operation response",
+            "schema": {
+              "$ref": "#/definitions/bulbasur_v1LogoutResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/{token_id}/refresh": {
+      "post": {
+        "tags": [
+          "AuthService"
+        ],
+        "operationId": "AuthServiceRefreshToken",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "token_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bulbasur_v1RefreshTokenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "POST operation response",
+            "schema": {
+              "$ref": "#/definitions/bulbasur_v1RefreshTokenResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "bulbasur_v1AuthTokenDto": {
+      "type": "object",
+      "properties": {
+        "entity_id": {
+          "type": "string"
+        },
+        "expiry_duration": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "expiry_time_unit": {
+          "$ref": "#/definitions/coreTimeUnit"
+        },
+        "status": {
+          "$ref": "#/definitions/coreStatus"
+        },
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "bulbasur_v1LoginRequest": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "bulbasur_v1LoginResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/bulbasur_v1AuthTokenDto"
+        }
+      }
+    },
+    "bulbasur_v1LogoutRequest": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "token_id": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "bulbasur_v1LogoutResponse": {
+      "type": "object",
+      "properties": {
+        "successful": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "bulbasur_v1RefreshTokenRequest": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        },
+        "token_id": {
+          "type": "string"
+        },
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "bulbasur_v1RefreshTokenResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/bulbasur_v1AuthTokenDto"
+        }
+      }
+    },
+    "coreStatus": {
+      "type": "string",
+      "default": "unknown_status",
+      "enum": [
+        "unknown_status",
+        "active",
+        "inactive"
+      ]
+    },
+    "coreTimeUnit": {
+      "type": "string",
+      "default": "unknown_time_unit",
+      "enum": [
+        "unknown_time_unit",
+        "second",
+        "millisecond",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "year"
+      ]
+    }
+  }
+}

@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package bulbasur_v1;
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+import "core.proto";
+
+
+option go_package = "ho_oh;ho_oh";
+
+message AuthTokenDto {
+    string token = 1;
+    uint64 expiry_duration = 2;
+    core.TimeUnit expiry_time_unit = 3;
+    core.Status status = 4;
+    string entity_id = 5;
+}
+
+
+message AuthTokenAttributeDto {
+    string auth_token_id = 1;
+    string key = 2;
+    string value = 3;
+}
+
+message LoginResponse {
+    AuthTokenDto response = 1;
+}
+
+message LoginRequest {
+    string user_id = 1;
+    string password = 2;
+}
+
+message LogoutRequest {
+    string user_id = 1;
+    string token_id = 2;
+    string token = 3;
+}
+
+message LogoutResponse {
+    bool successful = 1;
+}
+
+
+message RefreshTokenRequest {
+    string token_id = 1;
+    string user_id = 2;
+    string token = 3;
+}
+
+message RefreshTokenResponse {
+    AuthTokenDto response = 1;
+}
+
+
+service AuthService {
+
+    rpc Login (LoginRequest) returns (LoginResponse) {
+        option (google.api.http) = {
+            post: "/v1/login"
+            body: "*"
+        };
+    }
+
+    rpc Logout (LogoutRequest) returns (LogoutResponse) {
+        option (google.api.http) = {
+            post: "/v1/{token_id}/logout"
+            body: "*"
+        };
+    }
+
+    rpc RefreshToken (RefreshTokenRequest) returns (RefreshTokenResponse) {
+        option (google.api.http) = {
+            post: "/v1/{token_id}/refresh"
+            body: "*"
+        };
+    }
+}
