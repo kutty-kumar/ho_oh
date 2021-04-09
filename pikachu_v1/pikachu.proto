@@ -4,10 +4,10 @@ package pikachu;
 
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
-import "core.proto";
+import "core_v1/core.proto";
 
 
-option go_package = "ho_oh/pikachu_v1;pikachu_v1";
+option go_package = "pikachu_v1;pikachu_v1";
 
 message UserDto {
     string first_name = 1;

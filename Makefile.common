@@ -32,6 +32,7 @@ GO_PACKAGES             ?= $(shell go list ./... | grep -v vendor)
 PROTOBUF_ARGS =  -I=$(PROJECT_ROOT)/vendor
 PROTOBUF_ARGS += --go_out=plugins=grpc,paths=source_relative:.
 PROTOBUF_ARGS += --validate_out="lang=go:."
+PROTOBUF_ARGS += --proto_path=$(PROJECT_ROOT)
 WITH_DATABASE ?= false
 WITH_GATEWAY  ?= false
 
@@ -89,16 +90,13 @@ push: .push-$(IMAGE_NAME)-$(IMAGE_VERSION)
 protobuf-atlas:
 	@$(GENERATOR) \
 	$(PROTOBUF_ARGS) \
-	$(PROJECT_ROOT)/pkg/core_v1/core.proto
-	@echo $(GENERATOR) $(PROTOBUF_ARGS) -I $(PROJECT_ROOT)/pkg/core_v1 $(PROJECT_ROOT)/pkg/bulbasur_v1/bulbasur.proto
+	$(PROJECT_ROOT)/core_v1/core.proto
 	@$(GENERATOR) \
-    	$(PROTOBUF_ARGS) \
-    	-I $(PROJECT_ROOT)/pkg/core_v1 \
-	$(PROJECT_ROOT)/pkg/bulbasur_v1/bulbasur.proto
+    $(PROTOBUF_ARGS) \
+	$(PROJECT_ROOT)/bulbasur_v1/bulbasur.proto
 	@$(GENERATOR) \
-    	$(PROTOBUF_ARGS) \
-    	-I $(PROJECT_ROOT)/pkg/core_v1 \
-	$(PROJECT_ROOT)/pkg/pikachu_v1/pikachu.proto
+    $(PROTOBUF_ARGS) \
+	$(PROJECT_ROOT)/pikachu_v1/pikachu.proto
 
 .PHONY vendor: vendor-atlas
 vendor-atlas:

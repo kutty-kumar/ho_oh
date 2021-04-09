@@ -4,10 +4,10 @@ package bulbasur_v1;
 
 import "google/protobuf/empty.proto";
 import "google/api/annotations.proto";
-import "core.proto";
+import "core_v1/core.proto";
 
 
-option go_package = "ho_oh/bulbasur_v1;bulbasur_v1";
+option go_package = "bulbasur_v1;bulbasur_v1";
 
 message AuthTokenDto {
     string token = 1;
