@@ -2,7 +2,6 @@ syntax = "proto3";
 
 package bulbasur_v1;
 
-import "google/protobuf/empty.proto";
 import "google/api/annotations.proto";
 import "core_v1/core.proto";
 

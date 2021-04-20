@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+package ditto;
+
+import "core_v1/core.proto";
+import "google/api/annotations.proto";
+
+message PrinterDto {
+    string user_id = 1;
+    string name = 2;
+    string description = 3;
+    core.Status status = 4;
+    string external_id = 5;
+}
+
+
+message CreatePrinterRequest{
+    PrinterDto request = 1;
+}
+
+message CreatePrinterResponse {
+    PrinterDto response = 2;
+}
+
+message UpdatePrinterRequest {
+    string printer_id = 1;
+    PrinterDto request = 2;
+}
+
+message UpdatePrinterResponse {
+    PrinterDto response = 1;
+}
+
+message GetPrinterByExternalIdRequest {
+    string printer_id = 1;
+}
+
+message GetPrinterByExternalIdResponse {
+    PrinterDto response = 1;
+}
+
+message MultiGetPrintersByExternalIdRequest {
+  repeated string printer_ids = 1;
+}
+
+message MultiGetPrintersByExternalIdResponse {
+    repeated PrinterDto result = 1;
+}
+
+service PrinterService {
+    rpc CreatePrinter(CreatePrinterRequest) returns (CreatePrinterResponse){
+        option(google.api.http) = {
+            post: "/v1/printers"
+            body: "request"
+        };
+    }
+
+    rpc UpdatePrinter(UpdatePrinterRequest) returns (UpdatePrinterResponse){
+        option(google.api.http) = {
+            patch: "/v1/printers/{printer_id}"
+            body: "request"
+        };
+    }
+
+    rpc GetPrinterByExternalId(GetPrinterByExternalIdRequest) returns (GetPrinterByExternalIdResponse){
+        option(google.api.http) = {
+            get: "/v1/printers/{printer_id}"
+        };
+    }
+
+    rpc MultiGetPrintersByExternalId(MultiGetPrintersByExternalIdRequest) returns (MultiGetPrintersByExternalIdResponse){
+        option(google.api.http) = {
+            put: "/v1/printers/multi-get"
+            body: "*"
+        };
+    }
+}

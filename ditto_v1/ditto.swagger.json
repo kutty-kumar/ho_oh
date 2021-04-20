@@ -1,0 +1,202 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "ho-oh/ditto_v1/ditto.proto",
+    "version": "version not set"
+  },
+  "paths": {
+    "/v1/printers": {
+      "post": {
+        "tags": [
+          "PrinterService"
+        ],
+        "operationId": "PrinterServiceCreatePrinter",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dittoPrinterDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "POST operation response",
+            "schema": {
+              "$ref": "#/definitions/dittoCreatePrinterResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/printers/multi-get": {
+      "put": {
+        "tags": [
+          "PrinterService"
+        ],
+        "operationId": "PrinterServiceMultiGetPrintersByExternalId",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dittoMultiGetPrintersByExternalIdRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "PUT operation response",
+            "schema": {
+              "$ref": "#/definitions/dittoMultiGetPrintersByExternalIdResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/printers/{printer_id}": {
+      "get": {
+        "tags": [
+          "PrinterService"
+        ],
+        "operationId": "PrinterServiceGetPrinterByExternalId",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "printer_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET operation response",
+            "schema": {
+              "$ref": "#/definitions/dittoGetPrinterByExternalIdResponse"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "PrinterService"
+        ],
+        "operationId": "PrinterServiceUpdatePrinter",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "printer_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/dittoPrinterDto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "PATCH operation response",
+            "schema": {
+              "$ref": "#/definitions/dittoUpdatePrinterResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "coreStatus": {
+      "type": "string",
+      "default": "unknown_status",
+      "enum": [
+        "unknown_status",
+        "active",
+        "inactive"
+      ]
+    },
+    "dittoCreatePrinterResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/dittoPrinterDto"
+        }
+      }
+    },
+    "dittoGetPrinterByExternalIdResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/dittoPrinterDto"
+        }
+      }
+    },
+    "dittoMultiGetPrintersByExternalIdRequest": {
+      "type": "object",
+      "properties": {
+        "printer_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "dittoMultiGetPrintersByExternalIdResponse": {
+      "type": "object",
+      "properties": {
+        "result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/dittoPrinterDto"
+          }
+        }
+      }
+    },
+    "dittoPrinterDto": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "external_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/coreStatus"
+        },
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "dittoUpdatePrinterResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/dittoPrinterDto"
+        }
+      }
+    }
+  }
+}

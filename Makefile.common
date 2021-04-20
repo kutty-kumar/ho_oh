@@ -97,6 +97,9 @@ protobuf-atlas:
 	@$(GENERATOR) \
     $(PROTOBUF_ARGS) \
 	$(PROJECT_ROOT)/pikachu_v1/pikachu.proto
+	@$(GENERATOR) \
+    $(PROTOBUF_ARGS) \
+	$(PROJECT_ROOT)/ditto_v1/ditto.proto
 
 .PHONY vendor: vendor-atlas
 vendor-atlas:

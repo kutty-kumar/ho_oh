@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package core;
 
-import "google/protobuf/empty.proto";
-
 option go_package = "github.com/kutty-kumar/ho_oh/core_v1;core_v1";
 
 
