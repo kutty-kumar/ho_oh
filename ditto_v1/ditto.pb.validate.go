@@ -2,7 +2,7 @@
 // source: ho-oh/ditto_v1/ditto.proto
 // DO NOT EDIT!!!
 
-package ditto
+package ditto_v1
 
 import (
 	"bytes"

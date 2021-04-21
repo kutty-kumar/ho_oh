@@ -27,7 +27,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/dittoPrinterDto"
+              "$ref": "#/definitions/ditto_v1PrinterDto"
             }
           }
         ],
@@ -35,7 +35,7 @@
           "201": {
             "description": "POST operation response",
             "schema": {
-              "$ref": "#/definitions/dittoCreatePrinterResponse"
+              "$ref": "#/definitions/ditto_v1CreatePrinterResponse"
             }
           }
         }
@@ -53,7 +53,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/dittoMultiGetPrintersByExternalIdRequest"
+              "$ref": "#/definitions/ditto_v1MultiGetPrintersByExternalIdRequest"
             }
           }
         ],
@@ -61,7 +61,7 @@
           "201": {
             "description": "PUT operation response",
             "schema": {
-              "$ref": "#/definitions/dittoMultiGetPrintersByExternalIdResponse"
+              "$ref": "#/definitions/ditto_v1MultiGetPrintersByExternalIdResponse"
             }
           }
         }
@@ -85,7 +85,7 @@
           "200": {
             "description": "GET operation response",
             "schema": {
-              "$ref": "#/definitions/dittoGetPrinterByExternalIdResponse"
+              "$ref": "#/definitions/ditto_v1GetPrinterByExternalIdResponse"
             }
           }
         }
@@ -107,7 +107,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/dittoPrinterDto"
+              "$ref": "#/definitions/ditto_v1PrinterDto"
             }
           }
         ],
@@ -115,7 +115,7 @@
           "201": {
             "description": "PATCH operation response",
             "schema": {
-              "$ref": "#/definitions/dittoUpdatePrinterResponse"
+              "$ref": "#/definitions/ditto_v1UpdatePrinterResponse"
             }
           }
         }
@@ -132,23 +132,23 @@
         "inactive"
       ]
     },
-    "dittoCreatePrinterResponse": {
+    "ditto_v1CreatePrinterResponse": {
       "type": "object",
       "properties": {
         "response": {
-          "$ref": "#/definitions/dittoPrinterDto"
+          "$ref": "#/definitions/ditto_v1PrinterDto"
         }
       }
     },
-    "dittoGetPrinterByExternalIdResponse": {
+    "ditto_v1GetPrinterByExternalIdResponse": {
       "type": "object",
       "properties": {
         "response": {
-          "$ref": "#/definitions/dittoPrinterDto"
+          "$ref": "#/definitions/ditto_v1PrinterDto"
         }
       }
     },
-    "dittoMultiGetPrintersByExternalIdRequest": {
+    "ditto_v1MultiGetPrintersByExternalIdRequest": {
       "type": "object",
       "properties": {
         "printer_ids": {
@@ -159,18 +159,18 @@
         }
       }
     },
-    "dittoMultiGetPrintersByExternalIdResponse": {
+    "ditto_v1MultiGetPrintersByExternalIdResponse": {
       "type": "object",
       "properties": {
         "result": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/dittoPrinterDto"
+            "$ref": "#/definitions/ditto_v1PrinterDto"
           }
         }
       }
     },
-    "dittoPrinterDto": {
+    "ditto_v1PrinterDto": {
       "type": "object",
       "properties": {
         "description": {
@@ -212,11 +212,11 @@
         }
       }
     },
-    "dittoUpdatePrinterResponse": {
+    "ditto_v1UpdatePrinterResponse": {
       "type": "object",
       "properties": {
         "response": {
-          "$ref": "#/definitions/dittoPrinterDto"
+          "$ref": "#/definitions/ditto_v1PrinterDto"
         }
       }
     }

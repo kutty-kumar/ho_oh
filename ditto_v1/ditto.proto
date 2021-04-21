@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ditto;
+package ditto_v1;
 
 import "core_v1/core.proto";
 import "google/api/annotations.proto";

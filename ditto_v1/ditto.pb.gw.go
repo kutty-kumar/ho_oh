@@ -2,11 +2,11 @@
 // source: ho-oh/ditto_v1/ditto.proto
 
 /*
-Package ditto is a reverse proxy.
+Package ditto_v1 is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package ditto
+package ditto_v1
 
 import (
 	"context"
