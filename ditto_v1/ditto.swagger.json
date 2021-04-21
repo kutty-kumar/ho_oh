@@ -179,11 +179,33 @@
         "external_id": {
           "type": "string"
         },
+        "from_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "from_index": {
+          "type": "string",
+          "format": "uint64"
+        },
         "name": {
+          "type": "string"
+        },
+        "product_number": {
+          "type": "string"
+        },
+        "serial_number": {
           "type": "string"
         },
         "status": {
           "$ref": "#/definitions/coreStatus"
+        },
+        "to_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "to_index": {
+          "type": "string",
+          "format": "uint64"
         },
         "user_id": {
           "type": "string"

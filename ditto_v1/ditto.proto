@@ -4,13 +4,21 @@ package ditto;
 
 import "core_v1/core.proto";
 import "google/api/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
 
 message PrinterDto {
     string user_id = 1;
     string name = 2;
     string description = 3;
-    core.Status status = 4;
-    string external_id = 5;
+    string serial_number = 4;
+    core.Status status = 5;
+    string external_id = 6;
+    string product_number = 7;
+    google.protobuf.Timestamp from_date = 8;
+    google.protobuf.Timestamp to_date = 9;
+    uint64 from_index = 10;
+    uint64 to_index = 11;
 }
 
 

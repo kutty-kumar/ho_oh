@@ -47,9 +47,37 @@ func (m *PrinterDto) Validate() error {
 
 	// no validation rules for Description
 
+	// no validation rules for SerialNumber
+
 	// no validation rules for Status
 
 	// no validation rules for ExternalId
+
+	// no validation rules for ProductNumber
+
+	if v, ok := interface{}(m.GetFromDate()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return PrinterDtoValidationError{
+				field:  "FromDate",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if v, ok := interface{}(m.GetToDate()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return PrinterDtoValidationError{
+				field:  "ToDate",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	// no validation rules for FromIndex
+
+	// no validation rules for ToIndex
 
 	return nil
 }
