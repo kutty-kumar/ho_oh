@@ -1,78 +1,49 @@
 syntax = "proto3";
-
 package bulbasur_v1;
-
 import "google/api/annotations.proto";
 import "core_v1/core.proto";
-
-
 option go_package = "bulbasur_v1;bulbasur_v1";
-
 message AuthTokenDto {
     string token = 1;
-    uint64 expiry_duration = 2;
-    core.TimeUnit expiry_time_unit = 3;
-    core.Status status = 4;
-    string entity_id = 5;
+    core.Status status = 2;
+    string entity_id = 3;
+    string refresh_token = 4;
 }
-
-
-message AuthTokenAttributeDto {
-    string auth_token_id = 1;
-    string key = 2;
-    string value = 3;
-}
-
 message LoginResponse {
     AuthTokenDto response = 1;
 }
-
 message LoginRequest {
-    string user_id = 1;
+    string email = 1;
     string password = 2;
 }
-
 message LogoutRequest {
-    string user_id = 1;
-    string token_id = 2;
-    string token = 3;
+    string refresh_token = 1;
 }
-
 message LogoutResponse {
     bool successful = 1;
 }
-
-
 message RefreshTokenRequest {
-    string token_id = 1;
-    string user_id = 2;
-    string token = 3;
+    string refreshToken = 1;
 }
-
 message RefreshTokenResponse {
     AuthTokenDto response = 1;
 }
-
-
 service AuthService {
-
     rpc Login (LoginRequest) returns (LoginResponse) {
         option (google.api.http) = {
             post: "/v1/login"
             body: "*"
         };
     }
-
     rpc Logout (LogoutRequest) returns (LogoutResponse) {
         option (google.api.http) = {
-            post: "/v1/{token_id}/logout"
+            post: "/v1/logout"
             body: "*"
         };
     }
-
     rpc RefreshToken (RefreshTokenRequest) returns (RefreshTokenResponse) {
         option (google.api.http) = {
-            post: "/v1/{token_id}/refresh"
+            post: "/v1/refresh"
             body: "*"
         };
     }

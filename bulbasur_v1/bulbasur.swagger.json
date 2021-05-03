@@ -41,19 +41,13 @@
         }
       }
     },
-    "/v1/{token_id}/logout": {
+    "/v1/logout": {
       "post": {
         "tags": [
           "AuthService"
         ],
         "operationId": "AuthServiceLogout",
         "parameters": [
-          {
-            "type": "string",
-            "name": "token_id",
-            "in": "path",
-            "required": true
-          },
           {
             "name": "body",
             "in": "body",
@@ -73,19 +67,13 @@
         }
       }
     },
-    "/v1/{token_id}/refresh": {
+    "/v1/refresh": {
       "post": {
         "tags": [
           "AuthService"
         ],
         "operationId": "AuthServiceRefreshToken",
         "parameters": [
-          {
-            "type": "string",
-            "name": "token_id",
-            "in": "path",
-            "required": true
-          },
           {
             "name": "body",
             "in": "body",
@@ -113,12 +101,8 @@
         "entity_id": {
           "type": "string"
         },
-        "expiry_duration": {
-          "type": "string",
-          "format": "uint64"
-        },
-        "expiry_time_unit": {
-          "$ref": "#/definitions/coreTimeUnit"
+        "refresh_token": {
+          "type": "string"
         },
         "status": {
           "$ref": "#/definitions/coreStatus"
@@ -131,10 +115,10 @@
     "bulbasur_v1LoginRequest": {
       "type": "object",
       "properties": {
-        "password": {
+        "email": {
           "type": "string"
         },
-        "user_id": {
+        "password": {
           "type": "string"
         }
       }
@@ -150,13 +134,7 @@
     "bulbasur_v1LogoutRequest": {
       "type": "object",
       "properties": {
-        "token": {
-          "type": "string"
-        },
-        "token_id": {
-          "type": "string"
-        },
-        "user_id": {
+        "refresh_token": {
           "type": "string"
         }
       }
@@ -173,13 +151,7 @@
     "bulbasur_v1RefreshTokenRequest": {
       "type": "object",
       "properties": {
-        "token": {
-          "type": "string"
-        },
-        "token_id": {
-          "type": "string"
-        },
-        "user_id": {
+        "refreshToken": {
           "type": "string"
         }
       }
@@ -199,21 +171,6 @@
         "unknown_status",
         "active",
         "inactive"
-      ]
-    },
-    "coreTimeUnit": {
-      "type": "string",
-      "default": "unknown_time_unit",
-      "enum": [
-        "unknown_time_unit",
-        "second",
-        "millisecond",
-        "minute",
-        "hour",
-        "day",
-        "week",
-        "month",
-        "year"
       ]
     }
   }
