@@ -90,6 +90,28 @@
           }
         }
       },
+      "delete": {
+        "tags": [
+          "PrinterService"
+        ],
+        "operationId": "PrinterServiceDeletePrinter",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "printer_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "DELETE operation response",
+            "schema": {
+              "$ref": "#/definitions/ditto_v1UpdatePrinterResponse"
+            }
+          }
+        }
+      },
       "patch": {
         "tags": [
           "PrinterService"
@@ -116,6 +138,32 @@
             "description": "PATCH operation response",
             "schema": {
               "$ref": "#/definitions/ditto_v1UpdatePrinterResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/user-printers/multi-get": {
+      "put": {
+        "tags": [
+          "PrinterService"
+        ],
+        "operationId": "PrinterServiceMultiGetPrintersForUser",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ditto_v1NoOpRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "PUT operation response",
+            "schema": {
+              "$ref": "#/definitions/ditto_v1MultiGetPrintersByExternalIdResponse"
             }
           }
         }
@@ -169,6 +217,9 @@
           }
         }
       }
+    },
+    "ditto_v1NoOpRequest": {
+      "type": "object"
     },
     "ditto_v1PrinterDto": {
       "type": "object",
