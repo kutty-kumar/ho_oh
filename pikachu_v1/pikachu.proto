@@ -249,6 +249,15 @@ message GetUserAttributesResponse {
     repeated UserAttributeDto user_attributes = 1;
 }
 
+message GetUserByEmailAndPasswordRequest{
+    string email = 1;
+    string password = 2;
+}
+
+message GetUserByEmailAndPasswordResponse{
+    UserDto response = 1;
+}
+
 
 service UserService {
 
@@ -362,6 +371,13 @@ service UserService {
         option (google.api.http) = {
            delete: "/v1/users/{user_id}/relations/{relation_id}"
            body: "*"
+        };
+    }
+
+    rpc GetUserByEmailAndPassword(GetUserByEmailAndPasswordRequest) returns (GetUserByEmailAndPasswordResponse){
+        option(google.api.http)= {
+            put: "/v1/users"
+            body: "*"
         };
     }
 }

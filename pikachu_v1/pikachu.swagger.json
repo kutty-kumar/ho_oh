@@ -16,6 +16,30 @@
   },
   "paths": {
     "/v1/users": {
+      "put": {
+        "tags": [
+          "UserService"
+        ],
+        "operationId": "UserServiceGetUserByEmailAndPassword",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/pikachuGetUserByEmailAndPasswordRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "PUT operation response",
+            "schema": {
+              "$ref": "#/definitions/pikachuGetUserByEmailAndPasswordResponse"
+            }
+          }
+        }
+      },
       "post": {
         "tags": [
           "UserService"
@@ -630,6 +654,25 @@
         }
       }
     },
+    "pikachuGetUserByEmailAndPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "pikachuGetUserByEmailAndPasswordResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/pikachuUserDto"
+        }
+      }
+    },
     "pikachuGetUserIdentitiesResponse": {
       "type": "object",
       "properties": {
@@ -790,6 +833,9 @@
           "format": "double"
         },
         "last_name": {
+          "type": "string"
+        },
+        "password": {
           "type": "string"
         },
         "status": {
