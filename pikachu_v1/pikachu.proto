@@ -253,121 +253,113 @@ service UserService {
 
     rpc CreateUser (CreateUserRequest) returns (UserOperationResponse) {
         option (google.api.http) = {
-            post: "/users"
+            post: "/v1/users"
             body: "payload"
         };
     }
 
     rpc UpdateUser (UpdateUserRequest) returns (UserOperationResponse) {
         option (google.api.http) = {
-            patch: "/users/{user_id}"
+            patch: "/v1/users/{user_id}"
             body: "payload"
         };
     }
 
     rpc GetUserByExternalId (GetUserByExternalIdRequest) returns (UserOperationResponse) {
         option (google.api.http) = {
-            get: "/users/{user_id}"
+            get: "/v1/users/{user_id}"
         };
     }
 
     rpc MultiGetUsersByExternalId (MultiGetUsersByExternalIdRequest) returns (MultiGetUsersResponse) {
         option (google.api.http) = {
-            put: "/users/multi-get"
+            put: "/v1/users/multi-get"
             body: "*"
         };
     }
 
     rpc CreateUserIdentity (CreateUserIdentityRequest) returns (CreateUserIdentityResponse) {
         option (google.api.http) = {
-            post: "/users/{user_id}/identities"
+            post: "/v1/users/{user_id}/identities"
             body: "payload"
         };
     }
 
     rpc GetUserIdentities (GetUserIdentitiesRequest) returns (GetUserIdentitiesResponse) {
         option (google.api.http) = {
-            get: "/users/{user_id}/identities"
+            get: "/v1/users/{user_id}/identities"
         };
     }
 
     rpc UpdateUserIdentity (UpdateUserIdentityRequest) returns (UpdateUserIdentityResponse) {
         option (google.api.http) = {
-            patch: "/users/{user_id}/identities/{user_identity_id}"
+            patch: "/v1/users/{user_id}/identities/{user_identity_id}"
             body: "payload"
         };
     }
 
     rpc CreateUserAttribute (CreateUserAttributeRequest) returns (CreateUserAttributeResponse) {
         option (google.api.http) = {
-            post: "/users/{user_id}/attributes"
+            post: "/v1/users/{user_id}/attributes"
             body: "user_attribute"
         };
     }
 
     rpc UpdateUserAttribute (UpdateUserAttributeRequest) returns (UpdateUserAttributeResponse) {
         option (google.api.http) = {
-            post: "/users/{user_id}/attributes/{attribute_key}"
+            post: "/v1/users/{user_id}/attributes/{attribute_key}"
             body: "user_attribute"
         };
     }
 
     rpc GetUserAttributesByKey (GetUserAttributeByKeyRequest) returns (GetUserAttributeByKeyResponse) {
         option (google.api.http) = {
-            get: "/users/{user_id}/attributes/{attribute_key}"
+            get: "/v1/users/{user_id}/attributes/{attribute_key}"
         };
     }
 
     rpc GetUserAttributes (GetUserAttributesRequest) returns (GetUserAttributesResponse) {
         option (google.api.http) = {
-            get: "/users/{user_id}/attributes"
+            get: "/v1/users/{user_id}/attributes"
         };
     }
-}
-
-
-service UserAddressService {
 
     rpc CreateUserAddress (CreateUserAddressRequest) returns (CreateUserAddressResponse) {
         option (google.api.http) = {
-            post: "/users/{user_id}/addresses"
+            post: "/v1/users/{user_id}/addresses"
             body: "payload"
         };
     }
 
     rpc GetUserAddresses (GetUserAddressesRequest) returns (GetUserAddressesResponse) {
         option (google.api.http) = {
-        get: "/users/{user_id}/addresses"
+        get: "/v1/users/{user_id}/addresses"
         };
     }
 
     rpc UpdateUserAddress (UpdateUserAddressRequest) returns (UpdateUserAddressResponse) {
         option (google.api.http) = {
-            put: "/users/{user_id}/addresses/{address_id}"
+            put: "/v1/users/{user_id}/addresses/{address_id}"
             body: "payload"
         };
-
     }
-}
 
-
-service UserPatientService {
     rpc CreateUserRelation (LinkRelationRequest) returns (LinkRelationResponse) {
         option (google.api.http) = {
-            post: "/users/{user_id}/relations"
+            post: "/v1/users/{user_id}/relations"
             body: "user_relation"
         };
     }
 
     rpc GetUserRelations (GetUserRelationsRequest) returns (GetUserRelationsResponse) {
         option (google.api.http) = {
-            get: "/users/{user_id}/relations"
+            get: "/v1/users/{user_id}/relations"
         };
     }
 
     rpc DeleteUserRelation (UnlinkRelationRequest) returns (UnlinkRelationResponse) {
         option (google.api.http) = {
-           delete: "/users/{user_id}/relations/{relation_id}"
+           delete: "/v1/users/{user_id}/relations/{relation_id}"
            body: "*"
         };
     }

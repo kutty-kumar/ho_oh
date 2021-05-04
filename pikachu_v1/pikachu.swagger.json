@@ -15,7 +15,7 @@
     "version": "version not set"
   },
   "paths": {
-    "/users": {
+    "/v1/users": {
       "post": {
         "tags": [
           "UserService"
@@ -41,7 +41,7 @@
         }
       }
     },
-    "/users/multi-get": {
+    "/v1/users/multi-get": {
       "put": {
         "tags": [
           "UserService"
@@ -67,7 +67,7 @@
         }
       }
     },
-    "/users/{user_id}": {
+    "/v1/users/{user_id}": {
       "get": {
         "tags": [
           "UserService"
@@ -121,12 +121,12 @@
         }
       }
     },
-    "/users/{user_id}/addresses": {
+    "/v1/users/{user_id}/addresses": {
       "get": {
         "tags": [
-          "UserAddressService"
+          "UserService"
         ],
-        "operationId": "UserAddressServiceGetUserAddresses",
+        "operationId": "UserServiceGetUserAddresses",
         "parameters": [
           {
             "type": "string",
@@ -146,9 +146,9 @@
       },
       "post": {
         "tags": [
-          "UserAddressService"
+          "UserService"
         ],
-        "operationId": "UserAddressServiceCreateUserAddress",
+        "operationId": "UserServiceCreateUserAddress",
         "parameters": [
           {
             "type": "string",
@@ -175,12 +175,12 @@
         }
       }
     },
-    "/users/{user_id}/addresses/{address_id}": {
+    "/v1/users/{user_id}/addresses/{address_id}": {
       "put": {
         "tags": [
-          "UserAddressService"
+          "UserService"
         ],
-        "operationId": "UserAddressServiceUpdateUserAddress",
+        "operationId": "UserServiceUpdateUserAddress",
         "parameters": [
           {
             "type": "string",
@@ -213,7 +213,7 @@
         }
       }
     },
-    "/users/{user_id}/attributes": {
+    "/v1/users/{user_id}/attributes": {
       "get": {
         "tags": [
           "UserService"
@@ -267,7 +267,7 @@
         }
       }
     },
-    "/users/{user_id}/attributes/{attribute_key}": {
+    "/v1/users/{user_id}/attributes/{attribute_key}": {
       "get": {
         "tags": [
           "UserService"
@@ -333,7 +333,7 @@
         }
       }
     },
-    "/users/{user_id}/identities": {
+    "/v1/users/{user_id}/identities": {
       "get": {
         "tags": [
           "UserService"
@@ -387,7 +387,7 @@
         }
       }
     },
-    "/users/{user_id}/identities/{user_identity_id}": {
+    "/v1/users/{user_id}/identities/{user_identity_id}": {
       "patch": {
         "tags": [
           "UserService"
@@ -425,12 +425,12 @@
         }
       }
     },
-    "/users/{user_id}/relations": {
+    "/v1/users/{user_id}/relations": {
       "get": {
         "tags": [
-          "UserPatientService"
+          "UserService"
         ],
-        "operationId": "UserPatientServiceGetUserRelations",
+        "operationId": "UserServiceGetUserRelations",
         "parameters": [
           {
             "type": "string",
@@ -450,9 +450,9 @@
       },
       "post": {
         "tags": [
-          "UserPatientService"
+          "UserService"
         ],
-        "operationId": "UserPatientServiceCreateUserRelation",
+        "operationId": "UserServiceCreateUserRelation",
         "parameters": [
           {
             "type": "string",
@@ -479,12 +479,12 @@
         }
       }
     },
-    "/users/{user_id}/relations/{relation_id}": {
+    "/v1/users/{user_id}/relations/{relation_id}": {
       "delete": {
         "tags": [
-          "UserPatientService"
+          "UserService"
         ],
-        "operationId": "UserPatientServiceDeleteUserRelation",
+        "operationId": "UserServiceDeleteUserRelation",
         "parameters": [
           {
             "type": "string",
