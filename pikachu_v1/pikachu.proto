@@ -19,6 +19,7 @@ message UserDto {
     core.Gender gender = 7;
     core.Status status = 8;
     string external_id = 9;
+    string password = 10;
 }
 
 message AddressDto {
