@@ -1,0 +1,212 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "title": "ho-oh/snorlax_v1/snorlax.proto",
+    "version": "version not set"
+  },
+  "paths": {
+    "/v1/users": {
+      "post": {
+        "tags": [
+          "UserService"
+        ],
+        "operationId": "UserServiceCreateUser",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/snorlax_v1CreateUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "POST operation response",
+            "schema": {
+              "$ref": "#/definitions/snorlax_v1UserOperationResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/validate": {
+      "put": {
+        "tags": [
+          "UserService"
+        ],
+        "operationId": "UserServiceGetUserByEmailAndPassword",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/snorlax_v1GetUserByEmailAndPasswordRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "PUT operation response",
+            "schema": {
+              "$ref": "#/definitions/snorlax_v1UserOperationResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/users/{user_id}": {
+      "get": {
+        "tags": [
+          "UserService"
+        ],
+        "operationId": "UserServiceGetUserByExternalId",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "GET operation response",
+            "schema": {
+              "$ref": "#/definitions/snorlax_v1UserOperationResponse"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "UserService"
+        ],
+        "operationId": "UserServiceUpdateUser",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "user_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/snorlax_v1UpdateUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "PATCH operation response",
+            "schema": {
+              "$ref": "#/definitions/snorlax_v1UserOperationResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "coreGender": {
+      "type": "string",
+      "default": "unknown_gender",
+      "enum": [
+        "unknown_gender",
+        "male",
+        "female"
+      ]
+    },
+    "coreStatus": {
+      "type": "string",
+      "default": "unknown_status",
+      "enum": [
+        "unknown_status",
+        "active",
+        "inactive"
+      ]
+    },
+    "snorlax_v1CreateUserRequest": {
+      "type": "object",
+      "properties": {
+        "payload": {
+          "$ref": "#/definitions/snorlax_v1UserDto"
+        }
+      }
+    },
+    "snorlax_v1GetUserByEmailAndPasswordRequest": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "snorlax_v1UpdateUserRequest": {
+      "type": "object",
+      "properties": {
+        "payload": {
+          "$ref": "#/definitions/snorlax_v1UserDto"
+        },
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "snorlax_v1UserDto": {
+      "type": "object",
+      "properties": {
+        "date_of_birth": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "gender": {
+          "$ref": "#/definitions/coreGender"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/coreStatus"
+        },
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "snorlax_v1UserOperationResponse": {
+      "type": "object",
+      "properties": {
+        "response": {
+          "$ref": "#/definitions/snorlax_v1UserDto"
+        }
+      }
+    }
+  }
+}

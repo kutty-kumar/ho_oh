@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package snorlax_v1;
+
+import "google/api/annotations.proto";
+import "core_v1/core.proto";
+
+message UserDto {
+    string first_name = 1;
+    string last_name = 2;
+    string date_of_birth = 3;
+    core.Gender gender = 4;
+    core.Status status = 5;
+    string user_id = 6;
+    string email = 7;
+    string password = 8;
+}
+
+message UserOperationResponse {
+    UserDto response = 1;
+}
+
+message CreateUserRequest {
+    UserDto payload = 1;
+}
+
+message UpdateUserRequest {
+    UserDto payload = 1;
+    string user_id = 2;
+}
+
+message GetUserByEmailAndPasswordRequest{
+    string email = 1;
+    string password = 2;
+}
+
+message GetUserByExternalIdRequest {
+    string user_id = 1;
+}
+
+service UserService {
+
+    rpc CreateUser (CreateUserRequest) returns (UserOperationResponse) {
+        option (google.api.http) = {
+            post: "/v1/users"
+            body: "*"
+        };
+    }
+
+    rpc UpdateUser (UpdateUserRequest) returns (UserOperationResponse) {
+        option (google.api.http) = {
+            patch: "/v1/users/{user_id}"
+            body: "*"
+        };
+    }
+
+    rpc GetUserByExternalId (GetUserByExternalIdRequest) returns (UserOperationResponse) {
+        option (google.api.http) = {
+            get: "/v1/users/{user_id}"
+        };
+    }
+
+    rpc GetUserByEmailAndPassword (GetUserByEmailAndPasswordRequest) returns (UserOperationResponse) {
+        option (google.api.http) = {
+            put: "/v1/users/validate"
+            body: "*"
+        };
+    }
+}
