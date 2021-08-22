@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Compile the protocol buffer files to golang
-      run: snap install go --classic
-      run: make compile_go
+      - uses: actions/checkout@v2
+      - name: install golang
+        run: snap install go --classic
+      - name: Compile the protocol buffer files to golang
+        run: make compile_go
