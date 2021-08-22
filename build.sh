@@ -3,6 +3,7 @@
 export SOURCE_CODE_PATH=$HOME/go_proto_files;
 export GO_CODE_PATH="github.com/kutty-kumar/ho_oh_go";
 export PWD=`pwd`;
+tag='';
 
 build() {
   [ ! -d $SOURCE_CODE_PATH ] && mkdir -p $SOURCE_CODE_PATH;
@@ -12,9 +13,13 @@ build() {
   go mod tidy;
 }
 
+fill_git_tag(){
+  $1=$(git describe --always --tags || echo pre-commit);
+}
+
 push() {
   cd $SOURCE_CODE_PATH/$GO_CODE_PATH;
-  git init;
+  git init --initial-branch=master;
   git remote add origin $ORIGIN_PATH;
   git config user.name kutty-kumar;
   git config user.email kumar.varalakshmi@outlook.com;
@@ -23,12 +28,13 @@ push() {
   git fetch --all;
   git branch --set-upstream-to=origin/master master;
   git pull --rebase;
-  tag=$(git describe --always --tags || echo pre-commit);
+  tag=$1;
   git tag $tag;
   git push --atomic origin HEAD $tag;
 }
 
 build_and_push(){
+  fill_git_tag tag;
   build;
-  push;
+  push tag;
 }
