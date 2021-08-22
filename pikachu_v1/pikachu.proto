@@ -384,6 +384,6 @@ service UserService {
   rpc FindUserByEmail (FindUserByEmailRequest) returns (FindUserByEmailResponse){
     option (google.api.http) = {
       get: "/v1/users/{email_id}"
-    }
-  };
+    };
+  }
 }
