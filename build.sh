@@ -16,14 +16,14 @@ push() {
   cd $SOURCE_CODE_PATH/$GO_CODE_PATH;
   git init;
   git remote add origin $ORIGIN_PATH;
-  git checkout -b main;
   git config user.name kutty-kumar;
   git config user.email kumar.varalakshmi@outlook.com;
   git add .;
   git commit -m "compiled protobuf code";
-  tag=git describe --always --tags || echo pre-commit;
+  git pull --rebase main;
+  tag=$(git describe --always --tags || echo pre-commit);
   git tag $tag;
-  git push origin HEAD;
+  git push origin $tag;
 }
 
 build_and_push(){

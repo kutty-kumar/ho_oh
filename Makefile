@@ -9,3 +9,7 @@ compile_go:
 .PHONY: push_go
 push_go:
 	. ./build.sh; push
+
+.PHONY: build_and_push_go
+build_and_push_go:
+	. ./build.sh; build_and_push
