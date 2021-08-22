@@ -1,7 +1,5 @@
 name: Build and push protocol buffer definitions
 
-environment: production
-
 on:
   push:
     branches: [ main ]
@@ -9,11 +7,9 @@ on:
     branches: [ main ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+    environment: production
     steps:
       - uses: actions/checkout@v2
       - name: install golang
