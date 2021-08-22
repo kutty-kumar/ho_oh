@@ -13,7 +13,7 @@ build() {
 }
 
 push() {
-  cd $SOURCE_CODE_PATH/GO_CODE_PATH;
+  cd $SOURCE_CODE_PATH/$GO_CODE_PATH;
   git init;
   git remote add origin $ORIGIN_PATH;
   git checkout -b main;
