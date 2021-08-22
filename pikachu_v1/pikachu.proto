@@ -258,7 +258,7 @@ message GetUserByEmailAndPasswordResponse{
 }
 
 message FindUserByEmailRequest {
-  string email = 1;
+  string email_id = 1;
 }
 
 message FindUserByEmailResponse {
