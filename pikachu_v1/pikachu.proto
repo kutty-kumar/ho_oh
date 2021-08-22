@@ -257,6 +257,14 @@ message GetUserByEmailAndPasswordResponse{
   UserDto response = 1;
 }
 
+message FindUserByEmailRequest {
+  string email = 1;
+}
+
+message FindUserByEmailResponse {
+  UserDto response = 1;
+}
+
 
 service UserService {
 
@@ -372,4 +380,10 @@ service UserService {
       body: "*"
     };
   }
+
+  rpc FindUserByEmail (FindUserByEmailRequest) returns (FindUserByEmailResponse){
+    option (google.api.http) = {
+      get: "/v1/users/{email_id}"
+    }
+  };
 }
