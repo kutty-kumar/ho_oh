@@ -6,53 +6,55 @@ import "core_v1/core.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
+option go_package = "github.com/kutty-kumar/ho_oh/ditto_v1;ditto_v1";
+
 
 message PrinterDto {
-    string user_id = 1;
-    string name = 2;
-    string description = 3;
-    string serial_number = 4;
-    core.Status status = 5;
-    string external_id = 6;
-    string product_number = 7;
-    google.protobuf.Timestamp from_date = 8;
-    google.protobuf.Timestamp to_date = 9;
-    uint64 from_index = 10;
-    uint64 to_index = 11;
+  string user_id = 1;
+  string name = 2;
+  string description = 3;
+  string serial_number = 4;
+  core_v1.Status status = 5;
+  string external_id = 6;
+  string product_number = 7;
+  google.protobuf.Timestamp from_date = 8;
+  google.protobuf.Timestamp to_date = 9;
+  uint64 from_index = 10;
+  uint64 to_index = 11;
 }
 
 
 message CreatePrinterRequest {
-    PrinterDto request = 1;
+  PrinterDto request = 1;
 }
 
 message CreatePrinterResponse {
-    PrinterDto response = 2;
+  PrinterDto response = 2;
 }
 
 message UpdatePrinterRequest {
-    string printer_id = 1;
-    PrinterDto request = 2;
+  string printer_id = 1;
+  PrinterDto request = 2;
 }
 
 message UpdatePrinterResponse {
-    PrinterDto response = 1;
+  PrinterDto response = 1;
 }
 
 message GetPrinterByExternalIdRequest {
-    string printer_id = 1;
+  string printer_id = 1;
 }
 
 message GetPrinterByExternalIdResponse {
-    PrinterDto response = 1;
+  PrinterDto response = 1;
 }
 
 message MultiGetPrintersByExternalIdRequest {
-    repeated string printer_ids = 1;
+  repeated string printer_ids = 1;
 }
 
 message MultiGetPrintersByExternalIdResponse {
-    repeated PrinterDto result = 1;
+  repeated PrinterDto result = 1;
 }
 
 message NoOpRequest {
@@ -60,47 +62,47 @@ message NoOpRequest {
 }
 
 message DeletePrinterRequest {
-    string printer_id = 1;
+  string printer_id = 1;
 }
 
 service PrinterService {
-    rpc CreatePrinter (CreatePrinterRequest) returns (CreatePrinterResponse) {
-        option (google.api.http) = {
-            post: "/v1/printers"
-            body: "request"
-        };
-    }
+  rpc CreatePrinter (CreatePrinterRequest) returns (CreatePrinterResponse) {
+    option (google.api.http) = {
+      post: "/v1/printers"
+      body: "request"
+    };
+  }
 
-    rpc UpdatePrinter (UpdatePrinterRequest) returns (UpdatePrinterResponse) {
-        option (google.api.http) = {
-            patch: "/v1/printers/{printer_id}"
-            body: "request"
-        };
-    }
+  rpc UpdatePrinter (UpdatePrinterRequest) returns (UpdatePrinterResponse) {
+    option (google.api.http) = {
+      patch: "/v1/printers/{printer_id}"
+      body: "request"
+    };
+  }
 
-    rpc GetPrinterByExternalId (GetPrinterByExternalIdRequest) returns (GetPrinterByExternalIdResponse) {
-        option (google.api.http) = {
-            get: "/v1/printers/{printer_id}"
-        };
-    }
+  rpc GetPrinterByExternalId (GetPrinterByExternalIdRequest) returns (GetPrinterByExternalIdResponse) {
+    option (google.api.http) = {
+      get: "/v1/printers/{printer_id}"
+    };
+  }
 
-    rpc MultiGetPrintersByExternalId (MultiGetPrintersByExternalIdRequest) returns (MultiGetPrintersByExternalIdResponse) {
-        option (google.api.http) = {
-            put: "/v1/printers/multi-get"
-            body: "*"
-        };
-    }
+  rpc MultiGetPrintersByExternalId (MultiGetPrintersByExternalIdRequest) returns (MultiGetPrintersByExternalIdResponse) {
+    option (google.api.http) = {
+      put: "/v1/printers/multi-get"
+      body: "*"
+    };
+  }
 
-    rpc MultiGetPrintersForUser (NoOpRequest) returns (MultiGetPrintersByExternalIdResponse) {
-        option (google.api.http) = {
-            put: "/v1/user-printers/multi-get"
-            body: "*"
-        };
-    }
+  rpc MultiGetPrintersForUser (NoOpRequest) returns (MultiGetPrintersByExternalIdResponse) {
+    option (google.api.http) = {
+      put: "/v1/user-printers/multi-get"
+      body: "*"
+    };
+  }
 
-    rpc DeletePrinter(DeletePrinterRequest) returns (UpdatePrinterResponse){
-        option(google.api.http) = {
-            delete: "/v1/printers/{printer_id}"
-        };
-    }
+  rpc DeletePrinter(DeletePrinterRequest) returns (UpdatePrinterResponse){
+    option(google.api.http) = {
+      delete: "/v1/printers/{printer_id}"
+    };
+  }
 }
