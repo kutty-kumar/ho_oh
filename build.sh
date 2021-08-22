@@ -28,13 +28,13 @@ push() {
   git fetch --all;
   git branch --set-upstream-to=origin/master master;
   git pull --rebase;
-  tag=$1;
-  git tag $tag;
-  git push --atomic origin HEAD $tag;
+  git tag $1;
+  git push --atomic origin HEAD $1;
 }
 
 build_and_push(){
-  fill_git_tag tag;
+  fill_git_tag $tag;
+  echo $tag;
   build;
-  push tag;
+  push $tag;
 }
