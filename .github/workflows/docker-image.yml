@@ -15,4 +15,6 @@ jobs:
       - name: install golang
         run: sudo snap install go --classic
       - name: Compile the protocol buffer files to golang
+        env:
+          ORIGIN_PATH: ${{ secrets.ORIGIN_PATH }}
         run: make ORIGIN_PATH=${ORIGIN_PATH} build_and_push_go
