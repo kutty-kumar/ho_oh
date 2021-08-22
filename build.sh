@@ -20,10 +20,12 @@ push() {
   git config user.email kumar.varalakshmi@outlook.com;
   git add .;
   git commit -m "compiled protobuf code";
-  git pull --rebase main;
+  git fetch --all;
+  git branch --set-upstream-to=origin/master master;
+  git pull --rebase;
   tag=$(git describe --always --tags || echo pre-commit);
   git tag $tag;
-  git push origin $tag;
+  git push --atomic origin HEAD $tag;
 }
 
 build_and_push(){
