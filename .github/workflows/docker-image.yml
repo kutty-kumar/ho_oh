@@ -15,6 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: install golang
-        run: snap install go --classic
+        run: sudo snap install go --classic
       - name: Compile the protocol buffer files to golang
         run: make compile_go
