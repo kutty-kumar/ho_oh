@@ -19,7 +19,6 @@ message UserDto {
   core_v1.Gender gender = 7;
   core_v1.Status status = 8;
   string external_id = 9;
-  string password = 10;
 }
 
 message AddressDto {
@@ -370,13 +369,6 @@ service UserService {
   rpc DeleteUserRelation (UnlinkRelationRequest) returns (UnlinkRelationResponse) {
     option (google.api.http) = {
       delete: "/v1/users/{user_id}/relations/{relation_id}"
-      body: "*"
-    };
-  }
-
-  rpc GetUserByEmailAndPassword(GetUserByEmailAndPasswordRequest) returns (GetUserByEmailAndPasswordResponse){
-    option(google.api.http) = {
-      put: "/v1/users"
       body: "*"
     };
   }
