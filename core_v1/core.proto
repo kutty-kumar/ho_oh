@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package core_v1;
 
-option go_package = "github.com/kutty-kumar/ho_oh/core_v1;core_v1";
+option go_package = "github.com/kutty-kumar/ho_oh_go/core_v1;core_v1";
 
 
 enum Gender {

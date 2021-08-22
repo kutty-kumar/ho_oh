@@ -2,7 +2,7 @@ syntax = "proto3";
 package bulbasur_v1;
 import "google/api/annotations.proto";
 import "core_v1/core.proto";
-option go_package = "github.com/kutty-kumar/ho_oh/bulbasur_v1;bulbasur_v1";
+option go_package = "github.com/kutty-kumar/ho_oh_go/bulbasur_v1;bulbasur_v1";
 message AuthTokenDto {
   string token = 1;
   core_v1.Status status = 2;

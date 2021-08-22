@@ -6,7 +6,7 @@ import "core_v1/core.proto";
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/kutty-kumar/ho_oh/ditto_v1;ditto_v1";
+option go_package = "github.com/kutty-kumar/ho_oh_go/ditto_v1;ditto_v1";
 
 
 message PrinterDto {

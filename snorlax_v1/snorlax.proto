@@ -5,7 +5,7 @@ package snorlax_v1;
 import "google/api/annotations.proto";
 import "core_v1/core.proto";
 
-option go_package = "github.com/kutty-kumar/ho_oh/snorlax_v1;snorlax_v1";
+option go_package = "github.com/kutty-kumar/ho_oh_go/snorlax_v1;snorlax_v1";
 
 message UserDto {
   string first_name = 1;
